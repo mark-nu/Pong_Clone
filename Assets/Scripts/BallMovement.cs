@@ -5,7 +5,7 @@ public class BallMovement : MonoBehaviour
 {
     [SerializeField] private GameObject ball;
     private new Rigidbody2D rigidbody2D;
-    private BoxCollider2D boxCollider2D;
+    private CircleCollider2D circleCollider2D;
     [SerializeField] private float initialSpeed = -5f;
     [SerializeField] private float bounceForce = 1.1f;
     private float verticalExtent; // half the height of the collider in world units
@@ -15,8 +15,8 @@ public class BallMovement : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        verticalExtent = transform.localScale.y * boxCollider2D.size.y / 2f;
+        circleCollider2D = GetComponent<CircleCollider2D>();
+        verticalExtent = transform.localScale.y * circleCollider2D.radius / 2f;
     }
 
     private void Update()
