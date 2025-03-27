@@ -69,9 +69,6 @@ public class GameManager : MonoBehaviour
     {
         opponentPoints++;
 
-        Debug.Log(opponentPoints);
-        Debug.Log(selectedGame.GameLength);
-
         if (selectedGame.GameLength == GameLength.SHORT)
         {
             if (opponentPoints == 11)

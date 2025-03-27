@@ -65,7 +65,7 @@ public class MainMenuController : MonoBehaviour
         longGameButton.onClick.AddListener(() =>
         {
             GameMode gameMode;
-            if (modeText1.text.Contains("1P"))
+            if (modeText2.text.Contains("1P"))
             {
                 gameMode = GameMode.ONE_PLAYER;
             }
@@ -94,9 +94,19 @@ public class MainMenuController : MonoBehaviour
 
     public void OnModeClicked(string mode)
     {
-        modeText1.text = mode;
         startMenu.SetActive(false);
-        difficultyMenu.SetActive(true);
+
+        if (mode == "1P Game")
+        {
+            modeText1.text = mode;
+            difficultyMenu.SetActive(true);
+        }
+        else
+        {
+            modeText2.text = mode;
+            difficultyText.text = "";
+            gameLengthMenu.SetActive(true);
+        }
         menuPath.Push(startMenu);
     }
 
@@ -120,8 +130,6 @@ public class MainMenuController : MonoBehaviour
 
         GameObject lastMenu = menuPath.Pop();
         lastMenu.SetActive(true);
-
-        Debug.Log(lastMenu.name);
     }
 
     public void OnGameStart(GameMode mode, GameDifficulty difficulty, GameLength length)

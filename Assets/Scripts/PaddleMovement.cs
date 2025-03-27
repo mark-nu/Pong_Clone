@@ -18,7 +18,7 @@ public class PaddleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputAxis = Input.GetAxis("Vertical");
+        inputAxis = Input.GetAxis("Vertical1");
         velocity.y = inputAxis * moveSpeed;
 
         if (!GameManager.Instance.start)
