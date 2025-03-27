@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.GameConfig;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,60 +35,60 @@ public class MainMenuController : MonoBehaviour
 
         shortGameButton.onClick.AddListener(() =>
         {
-            GameManager.GameMode gameMode;
+            GameMode gameMode;
             if (modeText1.text.Contains("1P"))
             {
-                gameMode = GameManager.GameMode.ONE_PLAYER;
+                gameMode = GameMode.ONE_PLAYER;
             }
             else
             {
-                gameMode = GameManager.GameMode.TWO_PLAYER;
+                gameMode = GameMode.TWO_PLAYER;
             }
 
-            GameManager.GameDifficulty gameDifficulty;
+            GameDifficulty gameDifficulty;
             if (difficultyText.text.Contains("E"))
             {
-                gameDifficulty = GameManager.GameDifficulty.EASY;
+                gameDifficulty = GameDifficulty.EASY;
             }
             else if (difficultyText.text.Contains("M"))
             {
-                gameDifficulty = GameManager.GameDifficulty.MEDIUM;
+                gameDifficulty = GameDifficulty.MEDIUM;
             }
             else
             {
-                gameDifficulty = GameManager.GameDifficulty.HARD;
+                gameDifficulty = GameDifficulty.HARD;
             }
 
-            OnGameStart(gameMode, gameDifficulty, GameManager.GameLength.SHORT);
+            OnGameStart(gameMode, gameDifficulty, GameLength.SHORT);
         });
 
         shortGameButton.onClick.AddListener(() =>
         {
-            GameManager.GameMode gameMode;
+            GameMode gameMode;
             if (modeText1.text.Contains("1P"))
             {
-                gameMode = GameManager.GameMode.ONE_PLAYER;
+                gameMode = GameMode.ONE_PLAYER;
             }
             else
             {
-                gameMode = GameManager.GameMode.TWO_PLAYER;
+                gameMode = GameMode.TWO_PLAYER;
             }
 
-            GameManager.GameDifficulty gameDifficulty;
+            GameDifficulty gameDifficulty;
             if (difficultyText.text.Contains("E"))
             {
-                gameDifficulty = GameManager.GameDifficulty.EASY;
+                gameDifficulty = GameDifficulty.EASY;
             }
             else if (difficultyText.text.Contains("M"))
             {
-                gameDifficulty = GameManager.GameDifficulty.MEDIUM;
+                gameDifficulty = GameDifficulty.MEDIUM;
             }
             else
             {
-                gameDifficulty = GameManager.GameDifficulty.HARD;
+                gameDifficulty = GameDifficulty.HARD;
             }
 
-            OnGameStart(gameMode, gameDifficulty, GameManager.GameLength.LONG);
+            OnGameStart(gameMode, gameDifficulty, GameLength.LONG);
         });
     }
 
@@ -123,8 +124,14 @@ public class MainMenuController : MonoBehaviour
         Debug.Log(lastMenu.name);
     }
 
-    public void OnGameStart(GameManager.GameMode mode, GameManager.GameDifficulty difficulty, GameManager.GameLength length)
+    public void OnGameStart(GameMode mode, GameDifficulty difficulty, GameLength length)
     {
+        GameManager.Instance.selectedGame = new SelectedGameData
+        {
+            GameMode = mode,
+            GameDifficulty = difficulty,
+            GameLength = length
+        };
         SceneManager.LoadScene("Scene");
     }
 }

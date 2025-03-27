@@ -1,17 +1,16 @@
+using Assets.Scripts.GameConfig;
 using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public ISelectedGame selectedGame;
     [SerializeField] private TMP_Text playerScore;
     [SerializeField] private TMP_Text opponentScore;
     private int playerPoints = 0;
     private int opponentPoints = 0;
     public bool start = false;
-    public enum GameMode { ONE_PLAYER, TWO_PLAYER };
-    public enum GameDifficulty { EASY = 5, MEDIUM = 10, HARD = 20 };
-    public enum GameLength { SHORT = 11, LONG = 21 };
 
     private void Awake()
     {

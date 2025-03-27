@@ -3,7 +3,7 @@ using UnityEngine;
 public class OpponentMovement : MonoBehaviour
 {
     [SerializeField] private GameObject ball;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float MoveSpeed = 5f;
     private Vector3 startingPosition;
     private new Rigidbody2D rigidbody2D;
 
@@ -12,6 +12,12 @@ public class OpponentMovement : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         startingPosition = transform.position;
+
+        if (GameManager.Instance.selectedGame != null)
+        {
+            MoveSpeed = (float)GameManager.Instance.selectedGame.GameDifficulty;
+        }
+
     }
 
     private void Update()
@@ -25,7 +31,7 @@ public class OpponentMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 newPos = Vector2.MoveTowards(transform.position, ball.transform.position, moveSpeed * Time.fixedDeltaTime);
+        Vector2 newPos = Vector2.MoveTowards(transform.position, ball.transform.position, MoveSpeed * Time.fixedDeltaTime);
         rigidbody2D.MovePosition(newPos);
     }
 
