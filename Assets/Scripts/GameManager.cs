@@ -1,6 +1,7 @@
 using Assets.Scripts.GameConfig;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,10 +46,47 @@ public class GameManager : MonoBehaviour
     public void ScorePointPlayer()
     {
         playerPoints++;
+
+        if (selectedGame.GameLength == GameLength.SHORT)
+        {
+            if (playerPoints == 11)
+            {
+                NewGame();
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+        else
+        {
+            if (playerPoints == 21)
+            {
+                NewGame();
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 
     public void ScorePointOpponent()
     {
         opponentPoints++;
+
+        Debug.Log(opponentPoints);
+        Debug.Log(selectedGame.GameLength);
+
+        if (selectedGame.GameLength == GameLength.SHORT)
+        {
+            if (opponentPoints == 11)
+            {
+                NewGame();
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+        else
+        {
+            if (opponentPoints == 21)
+            {
+                NewGame();
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 }

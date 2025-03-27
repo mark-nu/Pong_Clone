@@ -62,7 +62,7 @@ public class MainMenuController : MonoBehaviour
             OnGameStart(gameMode, gameDifficulty, GameLength.SHORT);
         });
 
-        shortGameButton.onClick.AddListener(() =>
+        longGameButton.onClick.AddListener(() =>
         {
             GameMode gameMode;
             if (modeText1.text.Contains("1P"))
