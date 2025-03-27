@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     private int playerPoints = 0;
     private int opponentPoints = 0;
     public bool start = false;
-    public enum GameMode { SINGLES, DOUBLES };
-    public enum GameDifficulty { EASY, MEDIUM, HARD };
+    public enum GameMode { ONE_PLAYER, TWO_PLAYER };
+    public enum GameDifficulty { EASY = 5, MEDIUM = 10, HARD = 20 };
     public enum GameLength { SHORT = 11, LONG = 21 };
 
     private void Awake()

@@ -61,8 +61,6 @@ public class BallMovement : MonoBehaviour
             ContactPoint2D contactPoint2D = other.GetContact(0);
             Vector2 normal = contactPoint2D.normal;
 
-            Debug.Log(normal);
-
             if (normal != Vector2.down || normal != Vector2.up)
             {
                 // Calculate hit factor (-1 at bottom, 1 at top)
